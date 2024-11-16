@@ -2,13 +2,13 @@ const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
 
-// Clear and Focuse on the user entery field
+// // Clear and Focuse on the user entery field
 // const clearAndFocus = () => {
 // 	userInput.value = ""; // Clear the input field
 // 	userInput.focus();
 // };
 
-// clearAndFocus();
+// // clearAndFocus();
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -38,6 +38,14 @@ function writeToLog(
 }
 
 function calcResult(calcOperator) {
+	if (
+		calcOperator !== "ADD" &&
+		calcOperator !== "SUBTRACT" &&
+		calcOperator !== "MULTIPLY" &&
+		calcOperator !== "DIVIDE"
+	) {
+		return;
+	}
 	const enteredNumber = getUserNumberInput();
 	const initialResult = currentResult;
 	let mathOp;
