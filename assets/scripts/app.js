@@ -60,17 +60,15 @@ function calcResult(calcOperator) {
 		mathOp = "*";
 	} else if (calcOperator === "DIVIDE") {
 		mathOp = "/";
-		if (enteredNumber !== 0) {
+		if (enteredNumber) {
 			console.log(enteredNumber);
-
 			currentResult /= enteredNumber;
-		} else if (enteredNumber === 0) {
-			currentResult = "inf";
-			setTimeout(() => {
-				currentResult = 0;
-				outputResult(currentResult, "");
-			}, 2500);
 		}
+		currentResult = "inf";
+		setTimeout(() => {
+			currentResult = 0;
+			outputResult(currentResult, "");
+		}, 2500);
 	}
 	createAndWriteOutput(mathOp, initialResult, enteredNumber);
 	writeToLog(calcOperator, initialResult, enteredNumber, currentResult);
