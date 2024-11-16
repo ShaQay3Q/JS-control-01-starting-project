@@ -38,15 +38,16 @@ function writeToLog(
 }
 
 function calcResult(calcOperator) {
+	const enteredNumber = getUserNumberInput();
 	if (
-		calcOperator !== "ADD" &&
-		calcOperator !== "SUBTRACT" &&
-		calcOperator !== "MULTIPLY" &&
-		calcOperator !== "DIVIDE"
+		(calcOperator !== "ADD" &&
+			calcOperator !== "SUBTRACT" &&
+			calcOperator !== "MULTIPLY" &&
+			calcOperator !== "DIVIDE") ||
+		!enteredNumber
 	) {
 		return;
 	}
-	const enteredNumber = getUserNumberInput();
 	const initialResult = currentResult;
 	let mathOp;
 	if (calcOperator === "ADD") {
