@@ -44,17 +44,19 @@ function calcResult(calcOperator) {
 	if (calcOperator === "ADD") {
 		currentResult += enteredNumber;
 		mathOp = "+";
-	} else if (calcOperator === "Minus") {
+	} else if (calcOperator === "SUBTRACT") {
 		currentResult -= enteredNumber;
 		mathOp = "-";
-	} else if (calcOperator === "Multi") {
+	} else if (calcOperator === "MULTIPLY") {
 		currentResult *= enteredNumber;
 		mathOp = "*";
-	} else {
+	} else if (calcOperator === "DIVIDE") {
 		mathOp = "/";
-		if (userInput !== 0) {
-			currentResult /= userInput;
-		} else {
+		if (enteredNumber !== 0) {
+			console.log(enteredNumber);
+
+			currentResult /= enteredNumber;
+		} else if (enteredNumber === 0) {
 			currentResult = "inf";
 			setTimeout(() => {
 				currentResult = 0;
@@ -67,35 +69,19 @@ function calcResult(calcOperator) {
 }
 
 function add() {
-	const enteredNumber = getUserNumberInput();
-	const initialResult = currentResult;
-	currentResult += enteredNumber;
-	createAndWriteOutput("+", initialResult, enteredNumber);
-	writeToLog("ADD", initialResult, enteredNumber, currentResult);
+	calcResult("ADD");
 }
 
 function subtract() {
-	const enteredNumber = getUserNumberInput();
-	const initialResult = currentResult;
-	currentResult -= enteredNumber;
-	createAndWriteOutput("-", initialResult, enteredNumber);
-	writeToLog("SUBTRACT", initialResult, enteredNumber, currentResult);
+	calcResult("SUBTRACT");
 }
 
 function multiply() {
-	const enteredNumber = getUserNumberInput();
-	const initialResult = currentResult;
-	currentResult *= enteredNumber;
-	createAndWriteOutput("*", initialResult, enteredNumber);
-	writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
+	calcResult("MULTIPLY");
 }
 
 function divide() {
-	const enteredNumber = getUserNumberInput();
-	const initialResult = currentResult;
-	currentResult /= enteredNumber;
-	createAndWriteOutput("/", initialResult, enteredNumber);
-	writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
+	calcResult("DIVIDE");
 }
 
 addBtn.addEventListener("click", add);
